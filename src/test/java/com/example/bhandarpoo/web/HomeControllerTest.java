@@ -22,41 +22,38 @@ class HomeControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void homeShowsAllSections() throws Exception {
+    void homeShowsOnlyTheTwoProducts() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(Matchers.allOf(
-                        Matchers.containsString("Shop by Category"),
-                        Matchers.containsString("Latest Products"),
-                        Matchers.containsString("Online Puja Services"),
-                        Matchers.containsString("Knowledge Hub"))));
+                        Matchers.containsString("Our Products"),
+                        Matchers.containsString("Prabhu Prabhat 100% Pure Camphor (50 gm Box)"),
+                        Matchers.containsString("Prabhu Prabhat Dia Baati (100 pcs)"))));
     }
 
     @Test
-    void productsFilteredByCategory() throws Exception {
-        mockMvc.perform(get("/products").param("category", "attar"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(Matchers.containsString("Rose Attar")))
-                .andExpect(content().string(Matchers.not(Matchers.containsString("Tulsi Japa Mala"))));
+    void removedSectionsAreGone() throws Exception {
+        for (String path : new String[] {"/", "/products"}) {
+            mockMvc.perform(get(path))
+                    .andExpect(status().isOk())
+                    .andExpect(content().string(Matchers.not(Matchers.anyOf(
+                            Matchers.containsStringIgnoringCase("cart"),
+                            Matchers.containsStringIgnoringCase("online puja"),
+                            Matchers.containsStringIgnoringCase("knowledge hub"),
+                            Matchers.containsString("Shop by Category")))));
+        }
     }
 
     @Test
-    void prabhuPrabhatProductsShowDiscountedPrices() throws Exception {
-        mockMvc.perform(get("/products").param("category", "puja-items"))
+    void productsPageShowsDiscountedPrices() throws Exception {
+        mockMvc.perform(get("/products"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(Matchers.allOf(
-                        Matchers.containsString("Prabhu Prabhat 100% Pure Camphor (50 gm Box)"),
                         Matchers.containsString("₹150"),
                         Matchers.containsString("25% OFF"),
-                        Matchers.containsString("Prabhu Prabhat Dia Baati (100 pcs)"),
+                        Matchers.containsString("₹200"),
                         Matchers.containsString("50% OFF"),
                         Matchers.containsString("/images/products/prabhu-prabhat-camphor.svg"))));
-    }
-
-    @Test
-    void unknownCategoryIsNotFound() throws Exception {
-        mockMvc.perform(get("/products").param("category", "nope"))
-                .andExpect(status().isNotFound());
     }
 
     @Test

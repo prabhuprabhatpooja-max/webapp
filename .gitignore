@@ -1,4 +1,6 @@
 target/
+/test/
+*.war
 *.class
 *.log
 .idea/
@@ -7,3 +9,4 @@ target/
 .settings/
 .project
 .classpath
+asterix_story_log.json

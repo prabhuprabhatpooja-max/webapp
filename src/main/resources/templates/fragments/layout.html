@@ -15,7 +15,7 @@
 <header th:fragment="header" class="site-header">
     <div class="topbar">
         <div class="container topbar-inner">
-            <span>🙏 Authentic puja samagri &amp; online puja services</span>
+            <span>🙏 Pure puja essentials, delivered to your door</span>
             <span class="topbar-contact">
                 <a href="tel:+910000000000">📞 +91 00000 00000</a>
                 <a href="mailto:hello@prabhuprabhat.example">✉️ hello@prabhuprabhat.example</a>
@@ -31,19 +31,9 @@
         <nav class="main-nav">
             <a th:href="@{/}">Home</a>
             <a th:href="@{/#about}">About Us</a>
-            <div class="dropdown">
-                <a th:href="@{/products}" class="dropdown-toggle">Products ▾</a>
-                <div class="dropdown-menu">
-                    <a th:each="c : ${categories}" th:href="@{/products(category=${c.slug()})}"
-                       th:text="${c.name()}">Category</a>
-                </div>
-            </div>
-            <a th:href="@{/#puja}">Online Puja</a>
+            <a th:href="@{/products}">Products</a>
             <a th:href="@{/#contact}">Contact Us</a>
         </nav>
-        <a th:href="@{/products}" class="cart" aria-label="Cart">
-            🛒 <span class="cart-count" id="cart-count">0</span>
-        </a>
     </div>
 </header>
 
@@ -60,7 +50,6 @@
             <strong th:text="'₹' + ${#numbers.formatInteger(p.price(), 1, 'COMMA')}">₹100</strong>
             <s th:if="${p.onSale()}" th:text="'₹' + ${#numbers.formatInteger(p.mrp(), 1, 'COMMA')}">₹120</s>
         </div>
-        <button class="btn btn-primary btn-block add-to-cart">Add to Cart</button>
     </div>
 </div>
 
@@ -71,8 +60,7 @@
                 <span class="logo-mark">ॐ</span>
                 <span class="logo-text">Prabhu <span>Prabhat</span><small>Pooja World LLP</small></span>
             </a>
-            <p>Your online store for traditional puja items, devotional products and online puja services,
-                delivered with care.</p>
+            <p>Pure, quality puja essentials for your daily worship, packed with care.</p>
             <div class="social">
                 <a href="#" aria-label="Facebook">f</a>
                 <a href="#" aria-label="Instagram">◎</a>
@@ -84,11 +72,9 @@
             <a th:href="@{/}">Home</a>
             <a th:href="@{/#about}">About Us</a>
             <a th:href="@{/products}">Products</a>
-            <a th:href="@{/#puja}">Online Puja</a>
         </div>
         <div>
             <h4>Help</h4>
-            <a th:href="@{/#blog}">Blog</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms &amp; Conditions</a>
             <a href="#">Refund Policy</a>
