@@ -32,6 +32,17 @@ class HomeControllerTest {
     }
 
     @Test
+    void showsBusinessContactDetails() throws Exception {
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(Matchers.allOf(
+                        Matchers.containsString("mailto:prabhuprabhatpooja@gmail.com"),
+                        Matchers.containsString("tel:+919310321014"),
+                        Matchers.containsString("S206, Kapil Vihar, Sector-21C"),
+                        Matchers.containsString("Faridabad, Haryana – 121001"))));
+    }
+
+    @Test
     void removedSectionsAreGone() throws Exception {
         for (String path : new String[] {"/", "/products"}) {
             mockMvc.perform(get(path))
