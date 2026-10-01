@@ -39,7 +39,9 @@ class HomeControllerTest {
                         Matchers.containsString("mailto:prabhuprabhatpooja@gmail.com"),
                         Matchers.containsString("tel:+919310321014"),
                         Matchers.containsString("S206, Kapil Vihar, Sector-21C"),
-                        Matchers.containsString("Faridabad, Haryana – 121001"))));
+                        Matchers.containsString("Faridabad, Haryana – 121001"),
+                        Matchers.containsString("https://www.instagram.com/prabhuprabhatpooja/"),
+                        Matchers.containsString("https://www.facebook.com/prabhuprabhatpooja"))));
     }
 
     @Test
@@ -51,6 +53,8 @@ class HomeControllerTest {
                             Matchers.containsStringIgnoringCase("cart"),
                             Matchers.containsStringIgnoringCase("online puja"),
                             Matchers.containsStringIgnoringCase("knowledge hub"),
+                            Matchers.containsString("About Us"),
+                            Matchers.containsStringIgnoringCase("youtube"),
                             Matchers.containsString("Shop by Category")))));
         }
     }
