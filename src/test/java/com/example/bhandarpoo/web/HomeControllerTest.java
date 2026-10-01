@@ -55,6 +55,7 @@ class HomeControllerTest {
                             Matchers.containsStringIgnoringCase("knowledge hub"),
                             Matchers.containsString("About Us"),
                             Matchers.containsStringIgnoringCase("youtube"),
+                            Matchers.containsString("Privacy Policy"),
                             Matchers.containsString("Shop by Category")))));
         }
     }

@@ -142,7 +142,7 @@ h1, h2 { font-family: 'Playfair Display', Georgia, serif; color: var(--maroon); 
 
 /* Footer */
 .site-footer { background: var(--maroon-dark); color: #e9d6c4; }
-.footer-grid { display: grid; grid-template-columns: 1.4fr 0.8fr 1fr 1.5fr; gap: 2rem; padding: 3.5rem 16px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1.4fr; gap: 2rem; padding: 3.5rem 16px; }
 .site-footer p a { display: inline; white-space: nowrap; }
 .site-footer h4 { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 1rem; }
 .site-footer a { display: block; margin-bottom: 0.45rem; }
